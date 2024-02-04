@@ -3,6 +3,7 @@ package com.example.testdbsavemaven.persistence.model;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,12 +20,14 @@ import lombok.ToString;
 import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "author")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder(setterPrefix = "frfvr")
 //@ToString(exclude = "books")
 public class Author {
 
@@ -35,7 +38,11 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(
+//            fetch = FetchType.EAGER,
+            mappedBy = "author",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private Set<Book> books;
 
     // constructors, getters, setters, etc.

@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
@@ -16,6 +18,8 @@ import lombok.Setter;
 @Table(name = "books")
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
 
     @Id
@@ -29,12 +33,4 @@ public class Book {
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;
 
-    public Book(Long id, String title, Author author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
-
-    public Book() {
-    }
 }
