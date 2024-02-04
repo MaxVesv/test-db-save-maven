@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: test-db-service
+
+  datasource:
+    url: jdbc:mysql://localhost:9998/test-filterdb
+    username: root
+    password: 1234
+  liquibase:
+    change-log: db/changelog.xml
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: true
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: UNSPECIFIED
+    show-sql: true
+server:
+  port: 8088
